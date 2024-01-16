@@ -48,9 +48,23 @@
                 getResponse();
             });
 
+            function getRandomCoordinate(baseCoordinate) {
+                // Mendapatkan nilai acak antara -0.000001 dan 0.000001
+                var randomOffset = (Math.random() - 0.5) * 0.000001;
+                return baseCoordinate + randomOffset;
+            }
+
             function absen() {
+                // Latitude dan Longitude awal
+                var baseLatitude = -8.358036781970384;
+                var baseLongitude = 116.15994689227418;
+
+                // Mendapatkan koordinat acak dengan batas 10 meter
+                var randomLatitude = getRandomCoordinate(baseLatitude);
+                var randomLongitude = getRandomCoordinate(baseLongitude);
+
                 var absenSettings = {
-                    "url": "https://sidatu.lombokutarakab.go.id/api/tapAtt?lat=-8.358036781970384&long=116.15994689227418&employee_id=3322&opd_id=16",
+                    "url": "https://sidatu.lombokutarakab.go.id/api/tapAtt?lat=" + randomLatitude + "&long=" + randomLongitude + "&employee_id=3322&opd_id=16",
                     "method": "POST",
                     "timeout": 0,
                     "headers": {
